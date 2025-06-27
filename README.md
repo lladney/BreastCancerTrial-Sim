@@ -177,6 +177,7 @@ Rscript scripts/08_generate_summary.R
 
 **Output:**  
 1. Final report compiling figures, tables, and key results (summary_report.html)
+   
 [Open summary_report.html](results/summary_report.html)
 
 ---
