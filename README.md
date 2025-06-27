@@ -28,7 +28,6 @@ BreastCancerTrial_Sim/
 │   ├── figures/
 │   │   ├── km_os_curve.png
 │   │   ├── km_os_curve_risktable.png
-│   │   ├── km_pfs_curve.png
 │   │   ├── forest_subgroups.png
 │   │   ├── cox_model_diagnostics.png
 │   │   ├── km_hr_positive.png
@@ -94,8 +93,8 @@ Output files will be saved to the `results/` folder.
 Rscript 01_simulate_breast_cancer_data.R
 ```
 **Output:**   
-- `simulated_clinical_data.csv`  (Full synthetic patient dataset)  
-- `baseline_characteristics.csv`  (Baseline summary table) 
+- Full synthetic patient dataset  (simulated_clinical_data.csv)
+- Baseline summary table  (baseline_characteristics.csv) 
 
 ---
 
@@ -104,7 +103,7 @@ Rscript 01_simulate_breast_cancer_data.R
 Rscript 02_sample_size_calc.R
 ```
 **Output:**  
-- `sample_size_output.txt`  (Sample size calculation summary)
+- Sample size calculation summary (sample_size_output.txt)
 
 ---
 
@@ -117,8 +116,6 @@ Rscript scripts/03_kaplan_meier_analysis.R
    ![KM OS](results/figures/km_os_curve.png)  
 2. Kaplan-Meier plot with risk table (km_os_curve_risktable.png)
    ![KM OS RT](results/figures/km_os_curve_risktable.png)  
-3. Kaplan-Meier plot for progression-free survival (km_pfs_curve.png)
-   ![KM PFS](results/figures/km_pfs_curve.png)
 
 ---
 
