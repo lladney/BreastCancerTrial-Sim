@@ -124,26 +124,62 @@ Rscript 04_subgroup_analysis.R
 
    ```cox_model_summary.csv```
 
+---
+
 ### Step 5: *GENERATE SUBGROUP-SPECIFIC KM CURVES*
 ```bash
 Rscript scripts/05_subgroup_km_curves.R
 ```
-**Output:**  
-1. KM curve: HR-positive patients  (km_hr_positive.png)
+**Output:**
+Kaplan-Meier plots:
+1. HR-positive patients  (km_hr_positive.png)
    ![KM HR P](results/figures/km_hr_positive.png)
-2. KM curve: HR-negative patients  (km_hr_negative.png)
+2. HR-negative patients  (km_hr_negative.png)
    ![KM HR N](results/figures/km_hr_negative.png)
-3. KM curve: ECOG = 0  (ecog_0_KM.png)
+3. ECOG = 0  (ecog_0_KM.png)
    ![KM E0](results/figures/subgroups/ecog_0_KM.png)
-4. KM curve: ECOG = 1  (ecog_1_KM.png)
+4. ECOG = 1  (ecog_1_KM.png)
    ![KM E1](results/figures/subgroups/ecog_1_KM.png)
-5. KM curve: ECOG = 2  (ecog_2_KM.png)
+5. ECOG = 2  (ecog_2_KM.png)
    ![KM E2](results/figures/subgroups/ecog_2_KM.png)
-6. KM curve: Pre-menopausal patients  (menopause_Pre_KM.png)
-   ![KM PreM](results/figures/results/figures/subgroups/menopause_Pre_KM.png)
-7. KM curve: Post-menopausal patients  (menopause_Post_KM.png)
-   ![KM PostM](results/figures/results/figures/subgroups/menopause_Post_KM.png)
+6. Pre-menopausal patients  (menopause_Pre_KM.png)
+   ![KM PreM](results/figures/subgroups/menopause_Pre_KM.png)
+7. Post-menopausal patients  (menopause_Post_KM.png)
+   ![KM PostM](results/figures/subgroups/menopause_Post_KM.png)
 
+---
+
+### Step 6: *LOG-RANK INTERACTION TESTS*
+```bash
+Rscript scripts/06_logrank_interaction_tests.R
+```
+
+**Output:**  
+1. p-values for interaction by subgroup (console) 
+
+---
+
+### Step 7: *FOREST PLOT AND SUBGROUP VISUALIZATIONS*
+```bash
+Rscript scripts/07_subgroup_km_plots.R
+```
+
+**Output:**  
+1. Forest plot of subgroup hazard ratios  (forest_subgroups.png)
+   ![Forest Plot](results/figures/forest_subgroups.png)
+
+---
+
+### Step 8: *GENERATE HTML SUMMARY REPORT*
+```bash
+Rscript scripts/08_generate_summary.R
+```
+
+**Output:**  
+1. Final report compiling figures, tables, and key results (summary_report.html)
+[Open summary_report.html](results/summary_report.html)
+
+---
 
 ## Dataset  
 
