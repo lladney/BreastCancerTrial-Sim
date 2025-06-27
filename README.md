@@ -29,7 +29,6 @@ BreastCancerTrial_Sim/
 │   │   ├── km_os_curve.png
 │   │   ├── km_os_curve_risktable.png
 │   │   ├── forest_subgroups.png
-│   │   ├── cox_model_diagnostics.png
 │   │   ├── km_hr_positive.png
 │   │   ├── km_hr_negative.png
 │   │   └── subgroups/
@@ -41,8 +40,6 @@ BreastCancerTrial_Sim/
 │   │       ├── menopause_Pre_KM.png
 │   │       └── menopause_Post_KM.png
 │   ├── tables/
-│   │   ├── baseline_characteristics.csv
-│   │   ├── adverse_event_rates.csv
 │   │   └── cox_model_summary.csv
 │   └── summary_report.html
 │
@@ -93,8 +90,9 @@ Output files will be saved to the `results/` folder.
 Rscript 01_simulate_breast_cancer_data.R
 ```
 **Output:**   
-- Full synthetic patient dataset  (simulated_clinical_data.csv)
-- Baseline summary table  (baseline_characteristics.csv) 
+1. Full synthetic patient dataset
+  
+  ```simulated_clinical_data.csv```
 
 ---
 
@@ -102,8 +100,6 @@ Rscript 01_simulate_breast_cancer_data.R
 ```bash
 Rscript 02_sample_size_calc.R
 ```
-**Output:**  
-- Sample size calculation summary (sample_size_output.txt)
 
 ---
 
@@ -119,15 +115,35 @@ Rscript scripts/03_kaplan_meier_analysis.R
 
 ---
 
-### Step 4:  *SUBGROUP AND AE ANALYSIS*  
-Run subgroup interaction models and adverse event summary:
+### Step 4:  *COX MODEL AND SUBGROUP HAZARD RATIOS*  
 ```bash
 Rscript 04_subgroup_analysis.R
-Rscript 05_adverse_event_summary.R
 ```
-Produces:
-- Forest plot of subgroup hazard ratios (e.g., by ECOG, menopause)  
-- AE comparison table between arms  
+**Outputs:**  
+1. Hazard ratios for treatment and subgroups
+
+   ```cox_model_summary.csv```
+
+### Step 5: *GENERATE SUBGROUP-SPECIFIC KM CURVES*
+```bash
+Rscript scripts/05_subgroup_km_curves.R
+```
+**Output:**  
+1. KM curve: HR-positive patients  (km_hr_positive.png)
+   ![KM HR P](results/figures/km_hr_positive.png)
+2. KM curve: HR-negative patients  (km_hr_negative.png)
+   ![KM HR N](results/figures/km_hr_negative.png)
+3. KM curve: ECOG = 0  (ecog_0_KM.png)
+   ![KM E0](results/figures/subgroups/ecog_0_KM.png)
+4. KM curve: ECOG = 1  (ecog_1_KM.png)
+   ![KM E1](results/figures/subgroups/ecog_1_KM.png)
+5. KM curve: ECOG = 2  (ecog_2_KM.png)
+   ![KM E2](results/figures/subgroups/ecog_2_KM.png)
+6. KM curve: Pre-menopausal patients  (menopause_Pre_KM.png)
+   ![KM PreM](results/figures/results/figures/subgroups/menopause_Pre_KM.png)
+7. KM curve: Post-menopausal patients  (menopause_Post_KM.png)
+   ![KM PostM](results/figures/results/figures/subgroups/menopause_Post_KM.png)
+
 
 ## Dataset  
 
