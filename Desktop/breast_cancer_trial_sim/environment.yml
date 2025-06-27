@@ -1,0 +1,15 @@
+name: clinical_r
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base=4.3
+  - r-data.table
+  - r-simstudy
+  - r-survival
+  - r-survminer
+  - r-ggplot2
+  - r-gtsummary
+  - r-flextable
+  - r-tidyverse
+  - r-forestplot

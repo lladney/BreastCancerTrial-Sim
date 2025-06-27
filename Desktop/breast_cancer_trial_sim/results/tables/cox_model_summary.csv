@@ -1,0 +1,14 @@
+"**Characteristic**","**HR**","**95% CI**","**p-value**"
+"treatment",NA,NA,NA
+"Chemotherapy",NA,NA,NA
+"Immunotherapy","0.65","0.50, 0.86","0.002"
+"hr_label",NA,NA,NA
+"HR+",NA,NA,NA
+"HR−","0.89","0.61, 1.31","0.6"
+"menopause",NA,NA,NA
+"Post",NA,NA,NA
+"Pre","0.86","0.65, 1.14","0.3"
+"ecog",NA,NA,NA
+"0",NA,NA,NA
+"1","0.89","0.67, 1.18","0.4"
+"2","0.75","0.45, 1.25","0.3"
