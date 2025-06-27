@@ -1,0 +1,7 @@
+# Exclude HTML report from language statistics
+results/summary_report.html linguist-documentation
+
+# Explicitly treat R scripts as R
+*.R linguist-language=R
+
+
