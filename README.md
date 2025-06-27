@@ -184,21 +184,20 @@ Rscript scripts/08_generate_summary.R
 
 ## Dataset  
 
-This project uses **fully simulated data** generated via the `simstudy` package to replicate characteristics of HR+/HER2− metastatic breast cancer trials. No real patient data are used.
+This project uses **fully simulated clinical trial data** generated using the `simstudy` package. It mimics a double-arm, 1:1 randomized Phase II trial comparing chemotherapy vs. PD-1/PD-L1 immunotherapy in HR+/HER2− metastatic breast cancer. No real patient data used.
 
-- **Design:** Phase II, 1:1 randomized, immunotherapy vs. chemo  
-- **Sample size:** n = 300 (simulated); power calculation suggests 633 needed for HR = 0.75  
-- **Event model:** Exponential survival with random censoring  
+- **Arms:** Standard chemotherapy vs. PD-1/PD-L1 immunotherapy  
+- **Sample Size:** n = 300 simulated patients  
 - **Endpoints:** Overall Survival (OS), Progression-Free Survival (PFS), Adverse Events  
+- **Stratification:** ECOG status, menopausal status, HR subgroup  
+
+---
 
 ## Documentation  
 
-📄 See the [Statistical Analysis Plan (SAP)](clinical_sap.md) for detailed methodology, rationale, and endpoint definitions.
+See the [Statistical Analysis Plan (SAP)](clinical_sap.md) for methodology, rationale, and endpoint definitions.
+
+---
 
 ## Notes  
-- All results are saved to the `results/` directory  
-- This pipeline is fully reproducible with R 4.3+  
-- Ideal for showcasing survival analysis, power calculations, and clinical trial simulation in bioinformatics or biostatistics portfolios
-
-## Citation  
-If referencing this project, please cite the Statistical Analysis Plan and mention simulated methodology inspired by oncology immunotherapy trials (e.g., IMpassion130, KEYNOTE-355).
+- This project was developed on macOS using R 4.3+.
