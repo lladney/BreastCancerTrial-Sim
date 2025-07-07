@@ -56,7 +56,7 @@ BreastCancerTrial_Sim/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/breast_cancer_trial_sim.git
+git clone https://github.com/lladney/breast_cancer_trial_sim.git
 cd breast_cancer_trial_sim
 ```
 
