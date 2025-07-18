@@ -1,48 +1,53 @@
-# scripts/07_subgroup_km_plots.R
+# Simulation of Randomized Clinical Trial Comparing Chemotherapy vs. Immunotherapy in HR+/HER2− Metastatic Breast Cancer
+# Step 7: Generate KM Plots for each Level of Multiple Subgroup Variables
 
-library(survival)
-library(survminer)
-library(data.table)
+# LIBRARIES
+library(survival)                                               # survival = survival analysis functions
+library(survminer)                                              # survminer = visualize survival analysis results
+library(data.table)                                             # data.table = fast data handling
 
-# Load data
-dt <- fread("data/simulated_clinical_data.csv")
+# LOAD SIMULATED DATA
+dt <- fread("data/simulated_clinical_data.csv")                 # Load simulated clinical dataset from CSV into data.table (dt)
 
-# Create output directory if it doesn't exist
-dir.create("results/figures/subgroups", recursive = TRUE, showWarnings = FALSE)
+# CREATE OUTPUT DIRECTORY
+dir.create("results/figures/subgroups",                         # Create folder to this path
+           recursive = TRUE,                                    # Allow creation of nested folders
+           showWarnings = FALSE)                                # If already exists, don't show warnings
 
-# Function to generate KM plots by treatment for each subgroup level
-plot_subgroup_km <- function(data, subgroup_var, out_dir) {
-  levels <- unique(data[[subgroup_var]])
+# GENERATE KM PLOTS BY TREATMENT FOR EACH SUBGROUP LEVEL
+plot_subgroup_km <- function(data,                              # Specify dataset (i.e., dt)
+                             subgroup_var,                      # Name of column to define subgroups (i.e., hr_label)
+                             out_dir) {                         # Output directory where plots saved
   
-  for (level in levels) {
-    subset_data <- data[get(subgroup_var) == level]
-    fit <- survfit(Surv(time, status) ~ treatment, data = subset_data)
+  levels <- unique(data[[subgroup_var]])                        # Get unique levels from current subgroup variable
+  
+  for (level in levels) {                                       # Loop through each level (i.e., for subgroup_var = menopause, levels = pre, post)
+    subset_data <- data[get(subgroup_var) == level]             # Create subset of dataset with rows for only current subgroup, current level
+    fit <- survfit(Surv(time, status) ~ treatment, data = subset_data) # Fit KM curve comparing treatment arms within current subgroup level
     
-    p <- ggsurvplot(
-      fit,
-      data = subset_data,
-      pval = TRUE,
-      title = paste("KM Plot -", subgroup_var, "=", level),
-      legend.title = "Treatment",
-      xlab = "Time (months)",
-      risk.table = TRUE,
-      ggtheme = theme_minimal()
+    p <- ggsurvplot(                                            # ggsurvplot() generates KM survival plot
+      fit,                                                      # fit = as specified above
+      data = subset_data,                                       # subset_data = as specified above
+      pval = TRUE,                                              # Add log-rank p-value comparing treatment arms
+      title = paste("KM Plot -", subgroup_var, "=", level),     # Generate title
+      legend.title = "Treatment",                               # Legend label
+      xlab = "Time (months)",                                   # x-axis label
+      risk.table = TRUE,                                        # Add risk table
+      ggtheme = theme_minimal()                                 # Minimal theme
     )
     
-    ggsave(
-      filename = paste0(out_dir, "/", subgroup_var, "_", level, "_KM.png"),
-      plot = p$plot,
-      width = 7,
+    ggsave(                                                     # Save KM plot to PNG
+      filename = paste0(out_dir, "/", subgroup_var, "_", level, "_KM.png"), # Build filename
+      plot = p$plot,                                            # Save only survival curve (not risk table)
+      width = 7,                                                # Dimensions
       height = 5,
-      dpi = 300
+      dpi = 300                                                 # Resolution
     )
   }
 }
 
-# Apply function to each subgroup variable
-subgroup_vars <- c("hr_label", "menopause", "ecog")
-for (var in subgroup_vars) {
-  plot_subgroup_km(dt, var, "results/figures/subgroups")
+# APPLY FUNCTION TO EACH SUBGROUP VARIABLE 
+subgroup_vars <- c("hr_label", "menopause", "ecog")             # Vector of subgroup variables
+for (var in subgroup_vars) {                                    # Loop through each subgroup variable in vector
+  plot_subgroup_km(dt, var, "results/figures/subgroups")        # Generate KM plots
 }
-
-
