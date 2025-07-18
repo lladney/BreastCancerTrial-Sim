@@ -33,7 +33,7 @@ def <- defData(def,                                            # Use existing de
 def <- defData(def,                                            # Use existing definition table
                varname = "her2_status",                        # Define HER2 receptor status (cancer biomarker) variable
                dist = "binary",                                # Binary (0 or 1)
-               formula = 0.1)                                  # 10% chance of 1 (HR+); 20% chance of 0 (HR-) 
+               formula = 0.1)                                  # 10% chance of 1 (HER2+); 90% chance of 0 (HER2-) 
 
 def <- defData(def,                                            # Use existing definition table
                varname = "rx",                                 # Define treatment variable
