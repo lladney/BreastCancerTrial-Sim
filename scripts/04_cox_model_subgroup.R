@@ -1,5 +1,5 @@
 # Simulation of Randomized Clinical Trial Comparing Chemotherapy vs. Immunotherapy in HR+/HER2− Metastatic Breast Cancer
-# Step 3: Fit Cox Proportional Hazards Model 
+# Step 4: Fit Cox Proportional Hazards Model 
 
 # LIBRARIES
 library(survival)                                               # survival = survival analysis functions
