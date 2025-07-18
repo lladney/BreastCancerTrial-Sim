@@ -1,4 +1,4 @@
-# BreastCancer-ClinicalTrial-Sim  
+# BreastCancerTrial-Sim  
 An R-based pipeline for simulating a randomized controlled trial (RCT) comparing immunotherapy versus chemotherapy in HR+/HER2− metastatic breast cancer. This pipeline includes data simulation, power analysis, survival modeling, subgroup assessment, and reproducible reporting.
 
 ## Summary  
