@@ -1,4 +1,4 @@
-# Simulation of Randomized Clinical Trial Comparing Chemotherapy vs. Immunotherapy in HR+/HR− Metastatic Breast Cancer
+# Simulation of Randomized Clinical Trial Comparing Chemotherapy vs. Immunotherapy in HR+/HER2− Metastatic Breast Cancer
 # Step 1: Simulate synthetic clinical trial dataset with patient traits, treatments, and survival outcomes
 
 # LIBRARIES
@@ -33,7 +33,7 @@ def <- defData(def,                                            # Use existing de
 def <- defData(def,                                            # Use existing definition table
                varname = "her2_status",                        # Define HER2 receptor status (cancer biomarker) variable
                dist = "binary",                                # Binary (0 or 1)
-               formula = 0.1)                                  # 10% chance of 1 (HER2+); 20% chance of 0 (HER2-) 
+               formula = 0.1)                                  # 10% chance of 1 (HR+); 20% chance of 0 (HR-) 
 
 def <- defData(def,                                            # Use existing definition table
                varname = "rx",                                 # Define treatment variable
